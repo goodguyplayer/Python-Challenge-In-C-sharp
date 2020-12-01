@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace PythonChallengeInCSharp
 {
@@ -11,10 +12,9 @@ namespace PythonChallengeInCSharp
 
             //Problem0();
             //Problem1();
+            //Problem2();
 
-            Problem2();
-
-
+            Problem3();
             Console.ReadKey();
         }
 
@@ -82,7 +82,7 @@ namespace PythonChallengeInCSharp
             // Load file
             FileHandling file = new FileHandling();
             string text = (file.readFile("forP2.txt"));
-            int result;
+            
             // I was NOT aware that dictionaries were a thing in c#
             // https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0#definition
             Dictionary<char, int> openWith = new Dictionary<char, int>();
@@ -106,6 +106,30 @@ namespace PythonChallengeInCSharp
                 Console.WriteLine(entry.Key + " - " + entry.Value);
             }
 
+        }
+
+        // http://www.pythonchallenge.com/pc/def/equality.html
+        /*
+         * Problem 3, here we go.
+         * Long string of text, "One small letter, surrounded by EXACTLY three big bodyguards"
+         * So basic regex.
+         * File is named "forP3.txt".
+         * 
+         */
+        static void Problem3()
+        {
+            // Load file
+            FileHandling file = new FileHandling();
+            string text = (file.readFile("forP3.txt"));
+
+            string search = "[^A-Z][A-Z]{3}[a-z]{1}[A-Z]{3}[^A-Z]";
+
+            Regex rgx = new Regex(search);
+
+            foreach (Match match in rgx.Matches(text))
+            {
+                Console.WriteLine(match.Value);
+            }
         }
 
     }
