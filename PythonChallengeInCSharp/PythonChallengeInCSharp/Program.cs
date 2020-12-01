@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PythonChallengeInCSharp
 {
@@ -11,8 +12,7 @@ namespace PythonChallengeInCSharp
             //Problem0();
             //Problem1();
 
-            FileHandling file = new FileHandling();
-            file.basic(); 
+            Problem2();
 
 
             Console.ReadKey();
@@ -66,6 +66,46 @@ namespace PythonChallengeInCSharp
 
                 }
             }
+        }
+
+        /*
+         * Problem 2 - http://www.pythonchallenge.com/pc/def/ocr.html
+         * It contains a long long string of data in the sourcecode and it's asking us to find rare characters.
+         * File is named "forP2.txt". So now we just need to extract the rare characters.
+         * 
+         * Originally, what I used to do was step one char, read the letter, find all instances, output the total on screen and pop that character out.
+         * Wonder if I can do the same here...
+         */
+         
+        static void Problem2()
+        {
+            // Load file
+            FileHandling file = new FileHandling();
+            string text = (file.readFile("forP2.txt"));
+            int result;
+            // I was NOT aware that dictionaries were a thing in c#
+            // https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2?view=net-5.0#definition
+            Dictionary<char, int> openWith = new Dictionary<char, int>();
+
+            // https://www.codeproject.com/Questions/177626/count-number-of-characters-in-a-string
+            foreach (char letter in text)
+            {
+                if (!openWith.ContainsKey(letter))
+                {
+                    openWith.Add(letter, 1);
+                } else
+                {
+                    openWith[letter]++;
+                }
+            }
+
+            // https://stackoverflow.com/questions/141088/what-is-the-best-way-to-iterate-over-a-dictionary
+            foreach (KeyValuePair<char, int> entry in openWith)
+            {
+                // do something with entry.Value or entry.Key
+                Console.WriteLine(entry.Key + " - " + entry.Value);
+            }
+
         }
 
     }
