@@ -10,10 +10,13 @@ namespace PythonChallengeInCSharp
         {
             //Console.WriteLine("Hello World!");
 
+            HttpRequestHandler handler = new HttpRequestHandler();
+            Console.WriteLine(handler.Get("http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=12345"));
             //Problem0();
             //Problem1();
             //Problem2();
             //Problem3();
+
             Problem4();
 
             Console.ReadKey();
