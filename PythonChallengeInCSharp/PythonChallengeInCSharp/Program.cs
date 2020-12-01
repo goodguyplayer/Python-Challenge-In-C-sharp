@@ -13,8 +13,9 @@ namespace PythonChallengeInCSharp
             //Problem0();
             //Problem1();
             //Problem2();
+            //Problem3();
+            Problem4();
 
-            Problem3();
             Console.ReadKey();
         }
 
@@ -121,15 +122,33 @@ namespace PythonChallengeInCSharp
             // Load file
             FileHandling file = new FileHandling();
             string text = (file.readFile("forP3.txt"));
-
             string search = "[^A-Z][A-Z]{3}[a-z]{1}[A-Z]{3}[^A-Z]";
-
             Regex rgx = new Regex(search);
 
+            // https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex.matches?redirectedfrom=MSDN&view=net-5.0#overloads
             foreach (Match match in rgx.Matches(text))
             {
                 Console.WriteLine(match.Value);
             }
+        }
+
+        // http://www.pythonchallenge.com/pc/def/linkedlist.php
+        /*
+         * Problem 4, yooooooooo
+         * From what I remember, each link has "and the next nothing is xxxx", with each link going to the next xxxx.
+         * Like, it starts at http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=12345 with the next nothing as 44827.
+         * Then http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=44827, and the next nothing is 45439 and so on...
+         * 
+         * So here's what we need to do.
+         * Http request to get the data from the page
+         * Get "and the next nothing is <number>" (Maybe make it as a method for reasons...)
+         * Then make the http request...
+         * Going to make Http requests its own class.
+         */
+         static void Problem4()
+        {
+        
+            Console.WriteLine("And here's nothing");
         }
 
     }
