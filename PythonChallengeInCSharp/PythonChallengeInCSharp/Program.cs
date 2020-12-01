@@ -10,8 +10,7 @@ namespace PythonChallengeInCSharp
         {
             //Console.WriteLine("Hello World!");
 
-            HttpRequestHandler handler = new HttpRequestHandler();
-            Console.WriteLine(handler.Get("http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=12345"));
+            
             //Problem0();
             //Problem1();
             //Problem2();
@@ -150,7 +149,11 @@ namespace PythonChallengeInCSharp
          */
          static void Problem4()
         {
-        
+            // Start part
+            HttpRequestHandler handler = new HttpRequestHandler();
+            string nothingurl = "http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=12345";
+
+
             Console.WriteLine("And here's nothing");
         }
 
