@@ -9,7 +9,12 @@ namespace PythonChallengeInCSharp
             //Console.WriteLine("Hello World!");
 
             //Problem0();
-            Problem1();
+            //Problem1();
+
+            FileHandling file = new FileHandling();
+            file.basic(); 
+
+
             Console.ReadKey();
         }
 
