@@ -14,9 +14,9 @@ namespace PythonChallengeInCSharp
             //Problem0();
             //Problem1();
             //Problem2();
-            //Problem3();
+            Problem3();
 
-            Problem4();
+            //Problem4();
 
             Console.ReadKey();
         }
@@ -125,12 +125,12 @@ namespace PythonChallengeInCSharp
             FileHandling file = new FileHandling();
             string text = (file.readFile("forP3.txt"));
             string search = "[^A-Z][A-Z]{3}[a-z]{1}[A-Z]{3}[^A-Z]";
-            Regex rgx = new Regex(search);
+            RegexHandler handler = new RegexHandler();
 
             // https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex.matches?redirectedfrom=MSDN&view=net-5.0#overloads
-            foreach (Match match in rgx.Matches(text))
+            foreach (Match match in handler.ReturnMatches(search, text))
             {
-                Console.WriteLine(match.Value);
+                Console.Write(match.Value.Substring(4, 1));
             }
         }
 
