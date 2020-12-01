@@ -10,11 +10,12 @@ namespace PythonChallengeInCSharp
         {
             //Console.WriteLine("Hello World!");
 
-            
+
             //Problem0();
             //Problem1();
             //Problem2();
-            Problem3();
+            //Problem3();
+            Problem4();
 
             //Problem4();
 
@@ -150,11 +151,33 @@ namespace PythonChallengeInCSharp
          static void Problem4()
         {
             // Start part
-            HttpRequestHandler handler = new HttpRequestHandler();
-            string nothingurl = "http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=12345";
+            HttpRequestHandler httphandler = new HttpRequestHandler();
+            //string nothing = "12345";
+            //string nothing = "8022";
+            string nothing = "21545";
+            string nothingurl = "http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing="+nothing;
+            string nothingSearch = @"and the next nothing is (\d+)";
+            string nothingnumber = @"[0-9]+";
+            RegexHandler regexhandler = new RegexHandler();
+            int well = 1000;
+            string nexturl;
 
+            for (int i= 0; i<well; i++)
+            {
+                nexturl = httphandler.Get(nothingurl);
+                Console.WriteLine(nexturl);
 
-            Console.WriteLine("And here's nothing");
+                foreach (Match match in regexhandler.ReturnMatches(nothingSearch, nexturl))
+                {
+                    foreach (Match va in regexhandler.ReturnMatches(nothingnumber, match.Value))
+                    {
+                        nothing = va.Value;
+                        nothingurl = "http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=" + nothing;
+                        System.Threading.Thread.Sleep(1000);
+                    }
+                }
+            }
+            //Console.WriteLine("And here's nothing");
         }
 
     }
